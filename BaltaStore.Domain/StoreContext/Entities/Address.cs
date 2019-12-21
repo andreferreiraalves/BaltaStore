@@ -28,9 +28,6 @@ namespace BaltaStore.Domain.StoreContext.Entities
 
         public EAddressType Type { get; private set; }
 
-        public override string ToString()
-        {
-            return $"{Street}, {Number} - {City}/{State}";
-        }
+        public override string ToString() => $"{Street}, {Number} - {City}/{State}";
     }
 }
