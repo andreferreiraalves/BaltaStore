@@ -29,11 +29,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
 
         public void AddItem(Product product, decimal quantity)
         {
-            if (quantity > product.QuantityOnHand)
-                AddNotification("OrderItem", $"Produto {product.Title} não tem {quantity} em estoque.");
-
             var item = new OrderItem(product, quantity);
-
             _items.Add(item);
         }
 
@@ -54,7 +50,7 @@ namespace BaltaStore.Domain.StoreContext.Entities
         {
             // a cada 5 produtos é uma entrega
             var deliveries = new List<Delivery>();
-            deliveries.Add(new Delivery(DateTime.Now.AddDays(5)));
+            // deliveries.Add(new Delivery(DateTime.Now.AddDays(5)));
 
             var count = 1;
             foreach (var item in _items)
