@@ -21,7 +21,7 @@ namespace BaltaStore.Domain.StoreContext.Commands.CustomerCommands.Inputs
 
         public bool Valid()
         {
-            return true;
+            return IsValid;
         }
     }
 }
