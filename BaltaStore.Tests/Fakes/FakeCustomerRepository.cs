@@ -1,0 +1,14 @@
+using BaltaStore.Domain.StoreContext.Entities;
+using BaltaStore.Domain.StoreContext.Repositories;
+
+namespace BaltaStore.Tests.Fakes
+{
+    public class FakeCustomerRepository : ICustomerRepository
+    {
+        public bool CheckDocument(string document) => false;
+
+        public bool CheckEmail(string email) => false;
+
+        public void Save(Customer customer) { }
+    }
+}
