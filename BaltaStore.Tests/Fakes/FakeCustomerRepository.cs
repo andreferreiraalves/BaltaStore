@@ -17,6 +17,11 @@ namespace BaltaStore.Tests.Fakes
             throw new NotImplementedException();
         }
 
+        public GetCustomerQueryResult Get(Guid Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public CustomerOrdersCountResult GetCustomerOrdersCountResult(string document)
         {
             return new CustomerOrdersCountResult
@@ -26,6 +31,11 @@ namespace BaltaStore.Tests.Fakes
                 Name = "André",
                 Orders = 10
             };
+        }
+
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid Id)
+        {
+            throw new NotImplementedException();
         }
 
         public void Save(Customer customer) { }

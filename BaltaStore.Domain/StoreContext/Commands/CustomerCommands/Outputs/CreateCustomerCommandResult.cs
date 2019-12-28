@@ -5,21 +5,15 @@ namespace BaltaStore.Domain.StoreContext.Commands.CustomerCommands.Outputs
 {
     public class CreateCustomerCommandResult : ICommandResult
     {
-        public CreateCustomerCommandResult()
+        public CreateCustomerCommandResult(bool sucess, string message, object data)
         {
-
+            Sucess = sucess;
+            Message = message;
+            Data = data;
         }
 
-        public CreateCustomerCommandResult(Guid id, string name, string email)
-        {
-            Id = id;
-            Name = name;
-            Email = email;
-        }
-
-        public Guid Id { get; set; }
-
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public bool Sucess { get; set; }
+        public string Message { get; set; }
+        public object Data { get; set; }
     }
 }
