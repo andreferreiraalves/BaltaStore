@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using BaltaStore.Domain.StoreContext.Entities;
@@ -31,11 +33,29 @@ namespace BaltaStore.Infra.StoreContext.Repositories
                .FirstOrDefault();
         }
 
+        public IEnumerable<ListCustomerQueryResult> Get()
+        {
+            return _context.Connection
+                .Query<ListCustomerQueryResult>("select [id], concat([FirstName], ' ', [lastName]) as [Name], [Document], [Email] from customer", commandType: CommandType.StoredProcedure);
+        }
+
+        public GetCustomerQueryResult Get(Guid Id)
+        {
+            return _context.Connection
+                .Query<GetCustomerQueryResult>("select [id], concat([FirstName], ' ', [lastName]) as [Name], [Document], [Email] from customer where [id] = @Id", new { Id = Id }, commandType: CommandType.StoredProcedure).FirstOrDefault();
+        }
+
         public CustomerOrdersCountResult GetCustomerOrdersCountResult(string document)
         {
             return _context.Connection
                 .Query<CustomerOrdersCountResult>("spGetCustomerOrdersCount", new { Document = document }, commandType: CommandType.StoredProcedure)
                 .FirstOrDefault();
+        }
+
+        public IEnumerable<ListCustomerOrdersQueryResult> GetOrders(Guid Id)
+        {
+            return _context.Connection
+                 .Query<ListCustomerOrdersQueryResult>("", commandType: CommandType.StoredProcedure);
         }
 
         public void Save(Customer customer)
